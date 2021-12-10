@@ -32,7 +32,7 @@ function signIn({ providers }) {
   );
 }
 //middle server side render
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   const providers = await getProviders();
   return {
     props: {

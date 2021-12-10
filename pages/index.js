@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from 'next/router';
 export default function Home() {
   const [color, setColor] = useState(["signin"]);
 
@@ -8,8 +9,10 @@ export default function Home() {
   //   setColor("SignIn");
   // };
 
+  const router = useRouter();
+
   const { data: session } = useSession();
-  console.log(session);
+  // console.log(session);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
@@ -39,6 +42,8 @@ export default function Home() {
               {color}
             </button>
           )}
+
+          <button onClick={()=>router.push('/signin')} className="bg-yellow-500 px-2 py-2 rounded text-white">Custom SignIn</button>
         </div>
       </main>
     </div>
